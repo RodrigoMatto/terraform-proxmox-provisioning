@@ -15,3 +15,31 @@ variable "ssh_key" {
   type        = string
   sensitive   = true
 }
+
+variable "nodes_names" {
+  description = "List of VM names"
+  type        = list(string)
+  default     = ["master-01", "worker-01", "worker-02"]
+}
+
+variable "nodes_base_name" {
+  description = "Base name for VMs"
+  type        = string
+  default     = "k8s"
+}
+
+variable "nodes_ips" {
+  description = "Map of VM names to their static IP addresses"
+  type        = map(string)
+  default     = {
+    master-01  = "192.168.100.151"
+    worker-01  = "192.168.100.152"
+    worker-02  = "192.168.100.153"
+  }
+}
+
+variable "nodes_gw" {
+  description = "Gateway IP for the network"
+  type        = string
+  default     = "192.168.100.1"
+}

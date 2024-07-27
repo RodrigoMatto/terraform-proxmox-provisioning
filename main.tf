@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "k8s_server" {
-    count = 1 
-    name  = "k8s-master01"
+    count = length(var.nodes_names)
+    name  = "${var.nodes_base_name}-${var.nodes_names[count.index]}"
     target_node = "proxmox"
     clone = "ubuntu-2204-ci"
     full_clone = true
@@ -40,7 +40,9 @@ resource "proxmox_vm_qemu" "k8s_server" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=192.168.100.154/24,gw=192.168.100.1"
+  ipconfig0 = "ip=${lookup(var.nodes_ips, var.nodes_names[count.index])}/24,gw=${var.nodes_gw}"
+
+  cicustom = "vendor=local:snippets/vendor.yaml"
 
   sshkeys = <<EOF
   ${var.ssh_key} 

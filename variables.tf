@@ -1,3 +1,9 @@
+variable "pm_api_url" {
+  description = "The URL of your Proxmox API."
+  type        = string
+  sensitive   = true
+}
+
 variable "pm_api_token_id" {
   description = "Proxmox API token ID"
   type        = string

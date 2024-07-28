@@ -16,7 +16,9 @@ Before using this project, ensure you have the following prerequisites installed
 - Terraform
 - Cloud-init template
 
-For detailed steps on generating your own cloud-init template, and more in deep configuration of this project, please refer to the first part of my [blog post]().
+For detailed steps on generating your own cloud-init template, and more in deep configuration of this project, please refer to the first part of my [blog post]()*.
+
+*The blog will be published tomorrow :D If it's not, please come back and read this part again.
 
 ## Configuration
 
@@ -80,7 +82,7 @@ Ensure that the main.tf file matches your Proxmox server's storage and network c
       ide {
         ide2 {
           cloudinit {
-            storage = "local"   // This one too
+            storage = "local"   // this one too
           }
         }
       }

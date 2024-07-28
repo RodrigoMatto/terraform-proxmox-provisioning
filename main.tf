@@ -1,17 +1,17 @@
 resource "proxmox_vm_qemu" "k8s_server" {
-    count = length(var.nodes_names)
-    name  = "${var.nodes_base_name}-${var.nodes_names[count.index]}"
+    count       = length(var.nodes_names)
+    name        = "${var.nodes_base_name}-${var.nodes_names[count.index]}"
     target_node = "proxmox"
-    clone = "ubuntu-2204-ci"
-    full_clone = true
+    clone       = "ubuntu-2204-ci"
+    full_clone  = true
     
-    os_type  = "cloud-init"
-    cpu      = "host"
-    cores      = 2
-    sockets  = "1"
-    memory     = 2048
-    scsihw   = "virtio-scsi-pci"
-    bootdisk = "scsi0"
+    os_type   = "cloud-init"
+    cpu       = "host"
+    cores     = 2
+    sockets   = "1"
+    memory    = 2048
+    scsihw    = "virtio-scsi-pci"
+    bootdisk  = "scsi0"
 
 # Storage
     disks {
@@ -42,9 +42,9 @@ resource "proxmox_vm_qemu" "k8s_server" {
 
   ipconfig0 = "ip=${lookup(var.nodes_ips, var.nodes_names[count.index])}/24,gw=${var.nodes_gw}"
 
-  cicustom = "vendor=local:snippets/vendor.yaml"
+  cicustom  = "vendor=local:snippets/vendor.yaml"
 
-  sshkeys = <<EOF
+  sshkeys   = <<EOF
   ${var.ssh_key} 
   EOF
 

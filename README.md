@@ -62,6 +62,7 @@ variable "nodes_gw" {
   default     = "192.168.100.1"     // This one too
 }
 ```
+You can add or remove as many nodes as you want here, terraform will handle it.
 
 ### Verify and modify main.tf
 
@@ -98,7 +99,7 @@ Ensure that the main.tf file matches your Proxmox server's storage and network c
 
 ## Usage
 
-To provision the VMs, Once you have cloned the repository and make the configured your enviroment variables, follow these steps:
+To provision the VMs, once you have cloned the repository and configured your enviroment variables, follow these steps:
 
 
 ```bash
